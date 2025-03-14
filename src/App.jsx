@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useContext } from "react";
+import AddToDo from "./components/AddToDo";
+import ToDoList from "./components/ToDoList";
+import ToDoContext from "./components/todo";
+import { Paper, Typography, Stack } from "@mui/material";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { todos } = useContext(ToDoContext);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Stack>
+      <Typography
+        sx={{
+          fontSize: "40px",
+          fontWeight: "bold",
+          textAlign: "center",
+          color: "#884332",
+          marginBottom: "30px",
+        }}
+      >
+        To-Do Web App
+      </Typography>
+      <Paper
+        elevation={4}
+        sx={{
+          backgroundColor: "#884332",
+          padding: "30px",
+        }}
+      >
+        <Stack sx={{ margin: "0" }}>
+          <Stack
+            sx={{
+              backgroundColor: "#571909",
+              width: "100%",
+              marginY: "10px",
+              padding: "20px",
+            }}
+          >
+            <AddToDo />
+          </Stack>
+          <Stack
+            sx={{
+              backgroundColor: "white",
+              color: "#884332",
+              width: "100%",
+              padding: "15px",
+            }}
+          >
+            <ToDoList todos={todos} />
+          </Stack>
+        </Stack>
+      </Paper>
+    </Stack>
+  );
 }
 
-export default App
+export default App;

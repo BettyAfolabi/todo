@@ -1,4 +1,4 @@
-import ShowToDo from "./showToDo";
+import ShowToDo from "./ShowToDo"
 import useToDoContext from "./use-todo-context";
 
 function ToDoList() {
